@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir noticia | LaCebolla</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <header class="site-header">
+        <div class="site-header__top">
+            <p class="site-logo">LaCebolla</p>
+            <div class="site-header__actions">
+                <span class="time-display" id="current-time" aria-live="polite">--:--</span>
+                <a class="button button--primary" href="login.html">Iniciar sesión</a>
+            </div>
+        </div>
+        <nav class="site-nav">
+            <a class="site-nav__link" href="index.html">Portada</a>
+            <a class="site-nav__link" href="ultima-hora.html">Última Hora</a>
+            <a class="site-nav__link" href="tendencias.html">Tendencias</a>
+            <details class="site-nav__dropdown">
+                <summary class="site-nav__summary">Secciones</summary>
+                <div class="site-nav__menu" role="menu">
+                    <a href="secciones.html">Todas las secciones</a>
+                    <a href="politica.html">Política</a>
+                    <a href="economia.html">Economía</a>
+                    <a href="cultura.html">Cultura</a>
+                    <a href="deportes.html">Deportes</a>
+                    <a href="tecnologia.html">Tecnología</a>
+                </div>
+            </details>
+            <a class="site-nav__link" href="anadir-noticia.html" aria-current="page">Añadir noticia</a>
+            <details class="site-nav__dropdown">
+                <summary class="site-nav__summary">Mi cuenta</summary>
+                <div class="site-nav__menu" role="menu">
+                    <a href="registro.html">Registro</a>
+                    <a href="mensajes.html">Mensajes</a>
+                    <a href="buscar-amigos.html">Buscar amigos</a>
+                    <a href="perfil.html">Perfil</a>
+                </div>
+            </details>
+        </nav>
+    </header>
+
+    <main>
+        <section class="card">
+            <h1>Añadir noticia</h1>
+            <p>
+                Completa el formulario para proponer una nueva noticia. El envío se guardará localmente
+                en tu dispositivo hasta que un editor la revise en el futuro panel de gestión.
+            </p>
+        </section>
+
+        <section class="card" aria-labelledby="news-form-heading">
+            <h2 id="news-form-heading">Formulario de propuesta</h2>
+            <form id="news-form" class="form-layout" novalidate>
+                <label for="news-title">
+                    Título de la noticia
+                    <input type="text" id="news-title" name="title" maxlength="120" required placeholder="Escribe un titular atractivo">
+                </label>
+                <label for="news-section">
+                    Sección
+                    <select id="news-section" name="section" required>
+                        <option value="" disabled selected>Selecciona una sección</option>
+                        <option value="ultima-hora">Última Hora</option>
+                        <option value="tendencias">Tendencias</option>
+                        <option value="politica">Política</option>
+                        <option value="economia">Economía</option>
+                        <option value="cultura">Cultura</option>
+                        <option value="deportes">Deportes</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="opinion">Opinión</option>
+                    </select>
+                </label>
+                <label for="news-body">
+                    Texto de la noticia
+                    <textarea id="news-body" name="body" rows="8" required placeholder="Incluye la información clave y el contexto"></textarea>
+                </label>
+                <div class="card__actions">
+                    <button type="submit" class="button button--primary">Guardar propuesta</button>
+                    <button type="button" id="clear-submissions" class="button button--secondary">Vaciar borradores</button>
+                </div>
+            </form>
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="card" aria-labelledby="submission-preview-heading">
+            <h2 id="submission-preview-heading">Borradores guardados en este dispositivo</h2>
+            <p>
+                Estas propuestas se almacenan únicamente en tu navegador. Cuando el panel de gestión esté disponible,
+                podrás enviarlas a la redacción.
+            </p>
+            <ul id="submission-list" class="stack"></ul>
+            <template id="submission-item-template">
+                <li class="card">
+                    <article class="stack">
+                        <span class="tag" data-role="submission-tag"></span>
+                        <h3 data-role="submission-title"></h3>
+                        <p data-role="submission-excerpt"></p>
+                        <p class="card__meta" data-role="submission-meta"></p>
+                    </article>
+                </li>
+            </template>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+        <div>
+            <div class="footer-container">
+                <div>
+                    <p class="site-logo">LaCebolla</p>
+                    <p>Periodismo con humor y responsabilidad.</p>
+                </div>
+                <nav class="footer-links" aria-label="Enlaces corporativos">
+                    <a href="#">Publicidad</a>
+                    <a href="#">Equipo</a>
+                    <a href="#">Financiación</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Medios</a>
+                    <a href="#">Accesibilidad</a>
+                </nav>
+                <nav class="footer-social" aria-label="Redes sociales">
+                    <a href="#">Facebook</a>
+                    <a href="#">X</a>
+                    <a href="#">Instagram</a>
+                </nav>
+            </div>
+        </div>
+        <div>
+            <div class="footer-container">
+                <p class="footer-note">© 2024 <strong>Ediciones LaCebolla</strong>. Reservados todos los derechos. Promovemos un periodismo accesible, riguroso y con buen sabor.</p>
+                <nav class="footer-links" aria-label="Políticas legales">
+                    <a href="#">Aviso legal</a>
+                    <a href="#">Política de cookies</a>
+                    <a href="#">Política de privacidad</a>
+                    <a href="#">Transparencia</a>
+                    <a href="#">RSS</a>
+                    <a href="#">Boletines</a>
+                </nav>
+                <div class="footer-partners">
+                    <span class="footer-partners__title">Red de aliados:</span>
+                    <a href="#">El Puerro</a>
+                    <a href="#">Brocoli.es</a>
+                    <a href="#">Ajoyagua</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/anadir-noticia.js"></script>
+</body>
+</html>
